@@ -576,7 +576,15 @@ function hideLoading() { document.getElementById('loading').style.display = 'non
 </script>
 
 <!-- Google Maps (Maps JS + Directions, KHÔNG cần Places API) -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSkMbG29f8U8Ior0lPDNYd2ZGIYloYp5w&callback=initMap&language=vi&region=VN" async defer></script>
+<script>
+(function() {
+  var s = document.createElement('script');
+  s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBSkMbG29f8U8Ior0lPDNYd2ZGIYloYp5w&callback=initMap&language=vi&region=VN';
+  s.async = true;
+  s.onerror = function() { alert('Google Maps failed to load - check billing/key'); };
+  document.head.appendChild(s);
+})();
+</script>
 
 </body>
   </html> 
