@@ -2,7 +2,7 @@
   "name": "KD Maps",
   "short_name": "KD Maps",
   "description": "Ứng dụng dẫn đường KD Maps",
-  "start_url": "/maps.html",
+  "start_url": "/maps/",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#000",
