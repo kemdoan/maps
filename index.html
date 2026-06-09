@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>KD Maps</title>
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Notification permission bar -->
+  <div id="notif-bar">
+    <span>Cần cấp quyền thông báo<br>để chỉ đường</span>
+    <button id="btn-allow-notif" onclick="requestNotifPermission()">Cấp quyền</button>
+  </div>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Top bar: search -->
+  <div id="topbar">
+    <div id="search-box">
+      <input id="destination-input" type="text" placeholder="📌 Chọn điểm đến..." autocomplete="off">
+      <button id="btn-go" onclick="searchRoute()">Đi</button>
+    </div>
+    <div id="autocomplete-list"></div>
+  </div>
+
+  <!-- Turn-by-turn instruction banner -->
+  <div id="instruction-banner">
+    <div id="turn-icon">⬆</div>
+    <div style="flex:1">
+      <div id="turn-text">Đang tính toán...</div>
+      <div id="turn-dist"></div>
+    </div>
+  </div>
+
+  <!-- Floating action buttons -->
+  <button id="btn-locate"     onclick="goToMyLocation()">📍</button>
+  <button id="btn-test-watch" onclick="testWatchNotif()">⌚</button>
+
+  <!-- Bottom panel -->
+  <div id="bottom-panel">
+    <button id="btn-navigate" onclick="startNavigation()">🧭 Bắt đầu dẫn đường</button>
+
+    <div id="status-card">
+      <div id="status-row">
+        <div class="stat-block">
+          <div class="stat-val"  id="stat-dist">--</div>
+          <div class="stat-label">Còn lại</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-val"  id="stat-time">--</div>
+          <div class="stat-label">Thời gian</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-val"  id="stat-speed">--</div>
+          <div class="stat-label">km/h</div>
+        </div>
+      </div>
+      <div id="progress-bar"><div id="progress-fill"></div></div>
+      <button id="btn-stop" onclick="stopNavigation()">■ Dừng dẫn đường</button>
+    </div>
+  </div>
+
+  <!-- Toast & loading -->
+  <div id="toast"></div>
+  <div id="loading">
+    <div class="spinner"></div>
+    <div id="loading-text">Đang xử lý...</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
